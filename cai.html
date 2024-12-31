@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>speech.ai</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .button:hover {
+                background-color: #0056b3;
+            }
+
+        .response {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>speech.ai</h1>
+            <p>Type something and get a response!</p>
+        </div>
+        <textarea id="userInput" placeholder="Say something..."></textarea>
+        <div class="button" onclick="generateResponse()">Send</div>
+        <div class="response" id="responseBox">AI will respond here...</div>
+    </div>
+
+    <script>
+        function generateResponse() {
+            const input = document.getElementById('userInput').value.trim();
+            const responseBox = document.getElementById('responseBox');
+
+            if (!input) {
+                responseBox.textContent = "Please say something!";
+                return;
+            }
+
+            // Predefined responses
+            const responses = {
+                "hello": "Hi! How can I help you today?",
+                "how are you": "I'm just a program, so I don’t have feelings, but thanks for asking!",
+                "what's your name": "I'm speech.ai. What’s yours?",
+                "bye": "Goodbye! Have a great day!",
+            };
+
+            // Make input lowercase for case-insensitive matching
+            const lowerCaseInput = input.toLowerCase();
+
+            // Use the response if it exists, or provide a default message
+            const aiResponse = responses[lowerCaseInput] || "I'm not sure how to respond to that, but I’m here to learn!";
+
+            responseBox.textContent = aiResponse;
+        }
+    </script>
+</body>
+</html>
